@@ -9,13 +9,38 @@ namespace DiceRoll
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-            Dictionary<int, string> dieFaceDictionary = DieFaces.dieFaceDictionary;
-        
+            foreach(KeyValuePair<int, string> kvp in DieFaces.dieFaceDictionary)
+            {
+                int numm = kvp.Key;
+                string str = kvp.Value;
+                Console.WriteLine($"{str}");
+            }
+            Console.ReadLine();
+            Console.WriteLine(DieFaces.dieFaceDictionary);
+            Console.ReadLine();
 
+
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine("Choose how many sides the die has (2-20): ");
+            int numOfSides = int.Parse(Console.ReadLine());
+            Dictionary<int, string> dieFaceDictionary = new Dictionary<int, string>(numOfSides);
+
+            foreach (KeyValuePair<int, string> kvp in DieFaces.dieFaceDictionary)
+            {
+                int number = kvp.Key;
+                string face = kvp.Value;
+                if (numOfSides > number)
+                {
+                    dieFaceDictionary.Add(number, face);
+                }
+            }
+
+
+        
+        
             while (true)
             {
                 Console.WriteLine("Press Enter to roll the dice or q to quit");
