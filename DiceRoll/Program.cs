@@ -12,6 +12,8 @@ namespace DiceRoll
 
         static void Main(string[] args)
         {
+
+            /*
             foreach(KeyValuePair<int, string> kvp in DieFaces.dieFaceDictionary)
             {
                 int numm = kvp.Key;
@@ -21,12 +23,12 @@ namespace DiceRoll
             Console.ReadLine();
             Console.WriteLine(DieFaces.dieFaceDictionary);
             Console.ReadLine();
-
+            */
 
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("Choose how many sides the die has (2-20): ");
             int numOfSides = int.Parse(Console.ReadLine());
-            Dictionary<int, string> dieFaceDictionary = new Dictionary<int, string>(numOfSides);
+            Dictionary<int, string> dieFaceDictionary = new Dictionary<int, string>(numOfSides + 1);
 
             foreach (KeyValuePair<int, string> kvp in DieFaces.dieFaceDictionary)
             {
@@ -38,9 +40,15 @@ namespace DiceRoll
                 }
             }
 
+            foreach (KeyValuePair<int, string> kvp in dieFaceDictionary)
+            {
+                int numm = kvp.Key;
+                string str = kvp.Value;
+                Console.WriteLine($"{str}");
+            }
+            Console.ReadLine();
 
-        
-        
+
             while (true)
             {
                 Console.WriteLine("Press Enter to roll the dice or q to quit");
